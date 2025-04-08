@@ -1,0 +1,29 @@
+[project]
+name = "poc_excel-api"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Fabián Barón", email = "fabian.baron.dev@gmail.com"},
+]
+dependencies = [
+    "fastapi[standard]>=0.115.12",
+    "uvicorn>=0.34.0",
+    "pyinstaller>=6.12.0",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+create_exe = { cmd = [
+    "pyinstaller",
+    "--onefile",
+    "--distpath", "output/dist",
+    "--workpath", "output/build",
+    "--specpath", "output/spec",
+    "src/suma_api.py"
+]}
